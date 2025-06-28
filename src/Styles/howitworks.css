@@ -1,0 +1,62 @@
+/* === How It Works Page === */
+.how-it-works-page {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.how-it-works-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #007b5e;
+}
+
+.description {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* === Segment Buttons === */
+.segment-control {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.segment-btn {
+  padding: 10px 16px;
+  border: 1px solid #007b5e;
+  background-color: transparent;
+  color: #007b5e;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.segment-btn.active,
+.segment-btn:hover {
+  background-color: #007b5e;
+  color: white;
+}
+
+/* === Video Section === */
+.video-container h2 {
+  font-size: 1.5rem;
+  color: #005c46;
+  margin-bottom: 16px;
+}
+
+.video-container video {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
