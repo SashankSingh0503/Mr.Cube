@@ -6,7 +6,6 @@ import "../Styles/productDetail.css";
 export default function ProductDetail() {
   const { id } = useParams();
   const product = allProducts.find((p) => p.id === parseInt(id));
-
   const [imageIndex, setImageIndex] = useState(0);
   const [expanded, setExpanded] = useState(null);
 
@@ -16,9 +15,12 @@ export default function ProductDetail() {
 
   if (!product) return <p>Product not found.</p>;
 
-  const basePath = product.image.replace(".png", "");
-  const imageCount = 4;
-  const images = Array.from({ length: imageCount }, (_, i) => `${basePath}${i === 0 ? "" : i}.png`);
+  const images = [
+    product.image,
+    "/assets/images/ginger1.png",
+    "/assets/images/ginger2.png",
+    "/assets/images/ginger3.png",
+  ];
 
   const toggleExpand = (section) => {
     setExpanded((prev) => (prev === section ? null : section));
@@ -30,19 +32,28 @@ export default function ProductDetail() {
 
       {/* Image Carousel */}
       <div className="image-carousel">
-        <button className="nav-btn left" onClick={() => setImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}>
+        <button
+          className="nav-btn left"
+          onClick={() =>
+            setImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+          }
+        >
           &#8592;
         </button>
-        <img src={images[imageIndex]} alt={product.name} />
-        <button className="nav-btn right" onClick={() => setImageIndex((prev) => (prev + 1) % images.length)}>
+        <img src={images[imageIndex]} alt={`Slide ${imageIndex}`} />
+        <button
+          className="nav-btn right"
+          onClick={() => setImageIndex((prev) => (prev + 1) % images.length)}
+        >
           &#8594;
         </button>
       </div>
 
       <p className="price">₹{product.price}</p>
       <p className="desc">
-        {product.name} is made with premium ingredients with no artificial colors or preservatives.
-        Drop in boiling water and enjoy authentic flavor instantly.
+        {product.name} is made with premium ingredients with no artificial
+        colors or preservatives. Drop in boiling water and enjoy authentic
+        flavor instantly.
       </p>
 
       {/* Collapsible Sections */}
@@ -55,10 +66,14 @@ export default function ProductDetail() {
             </div>
             {expanded === title && (
               <div className="info-content">
-                {title === "Ingredients" && "Tea extract,Milk powder, ginger extract, Cardamom extract, Lemongrass extract, Blackpepper extract, Water, sugar . No artificial additives."}
-                {title === "How to Make" && "Add one cube to boiling water. Stir well."}
-                {title === "Shelf Life" && "Best before 6 months from the date of packaging."}
-                {title === "License" && "FSSAI Approved. Manufactured under hygiene-certified conditions."}
+                {title === "Ingredients" &&
+                  "Tea extract, Milk powder, ginger extract, Cardamom extract, Lemongrass extract, Blackpepper extract, Water, sugar. No artificial additives."}
+                {title === "How to Make" &&
+                  "Add one cube to boiling water. Stir well."}
+                {title === "Shelf Life" &&
+                  "Best before 6 months from the date of packaging."}
+                {title === "License" &&
+                  "FSSAI Approved. Manufactured under hygiene-certified conditions."}
               </div>
             )}
           </div>
@@ -66,7 +81,8 @@ export default function ProductDetail() {
       </div>
 
       <p className="disclaimer">
-        * This is dummy data. Final data will be dynamically sourced from the database.
+        * This is dummy data. Final data will be dynamically sourced from the
+        database.
       </p>
     </div>
   );
